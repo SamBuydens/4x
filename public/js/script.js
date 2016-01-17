@@ -56,7 +56,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("var Handlebars = __webpack_require__(3);\nmodule.exports = (Handlebars[\"default\"] || Handlebars).template({\"compiler\":[7,\">= 4.0.0\"],\"main\":function(container,depth0,helpers,partials,data) {\n    return \"Hello \"\n    + container.escapeExpression(__webpack_require__(22).call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.name : depth0),{\"name\":\"uppercase\",\"hash\":{},\"data\":data}))\n    + \"\\n\";\n},\"useData\":true});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./_hbs/helloworld.hbs\n ** module id = 2\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./_hbs/helloworld.hbs?");
+	eval("var Handlebars = __webpack_require__(3);\nmodule.exports = (Handlebars[\"default\"] || Handlebars).template({\"compiler\":[7,\">= 4.0.0\"],\"main\":function(container,depth0,helpers,partials,data) {\n    return \"<canvas id=\\\"world-bounds\\\" width=\\\"600\\\" height=\\\"600\\\">Your browser requires canvas support.</canvas>\\n\";\n},\"useData\":true});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./_hbs/helloworld.hbs\n ** module id = 2\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./_hbs/helloworld.hbs?");
 
 /***/ },
 /* 3 */
@@ -173,12 +173,7 @@
 	eval("/* WEBPACK VAR INJECTION */(function(global) {/* global window */\n'use strict';\n\nexports.__esModule = true;\n\nexports['default'] = function (Handlebars) {\n  /* istanbul ignore next */\n  var root = typeof global !== 'undefined' ? global : window,\n      $Handlebars = root.Handlebars;\n  /* istanbul ignore next */\n  Handlebars.noConflict = function () {\n    if (root.Handlebars === Handlebars) {\n      root.Handlebars = $Handlebars;\n    }\n    return Handlebars;\n  };\n};\n\nmodule.exports = exports['default'];\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL25vLWNvbmZsaWN0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O3FCQUNlLFVBQVMsVUFBVSxFQUFFOztBQUVsQyxNQUFJLElBQUksR0FBRyxPQUFPLE1BQU0sS0FBSyxXQUFXLEdBQUcsTUFBTSxHQUFHLE1BQU07TUFDdEQsV0FBVyxHQUFHLElBQUksQ0FBQyxVQUFVLENBQUM7O0FBRWxDLFlBQVUsQ0FBQyxVQUFVLEdBQUcsWUFBVztBQUNqQyxRQUFJLElBQUksQ0FBQyxVQUFVLEtBQUssVUFBVSxFQUFFO0FBQ2xDLFVBQUksQ0FBQyxVQUFVLEdBQUcsV0FBVyxDQUFDO0tBQy9CO0FBQ0QsV0FBTyxVQUFVLENBQUM7R0FDbkIsQ0FBQztDQUNIIiwiZmlsZSI6Im5vLWNvbmZsaWN0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyogZ2xvYmFsIHdpbmRvdyAqL1xuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24oSGFuZGxlYmFycykge1xuICAvKiBpc3RhbmJ1bCBpZ25vcmUgbmV4dCAqL1xuICBsZXQgcm9vdCA9IHR5cGVvZiBnbG9iYWwgIT09ICd1bmRlZmluZWQnID8gZ2xvYmFsIDogd2luZG93LFxuICAgICAgJEhhbmRsZWJhcnMgPSByb290LkhhbmRsZWJhcnM7XG4gIC8qIGlzdGFuYnVsIGlnbm9yZSBuZXh0ICovXG4gIEhhbmRsZWJhcnMubm9Db25mbGljdCA9IGZ1bmN0aW9uKCkge1xuICAgIGlmIChyb290LkhhbmRsZWJhcnMgPT09IEhhbmRsZWJhcnMpIHtcbiAgICAgIHJvb3QuSGFuZGxlYmFycyA9ICRIYW5kbGViYXJzO1xuICAgIH1cbiAgICByZXR1cm4gSGFuZGxlYmFycztcbiAgfTtcbn1cbiJdfQ==\n\n/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))\n\n/*****************\n ** WEBPACK FOOTER\n ** ./~/handlebars/dist/cjs/handlebars/no-conflict.js\n ** module id = 21\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./~/handlebars/dist/cjs/handlebars/no-conflict.js?");
 
 /***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	eval("'use strict';\n\nmodule.exports = function (ctx) {\n  return ctx.toUpperCase();\n};\n\n/*****************\n ** WEBPACK FOOTER\n ** ./_helpers/uppercase.js\n ** module id = 22\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./_helpers/uppercase.js?");
-
-/***/ },
+/* 22 */,
 /* 23 */
 /***/ function(module, exports) {
 

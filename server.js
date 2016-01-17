@@ -12,7 +12,13 @@ let server = new Hapi.Server({
     routes: {
       files: {
         relativeTo: path.join(__dirname, 'public')
+      },
+      validate: {
+        options: {
+          abortEarly: false
+        }
       }
+    },
     router: {
       stripTrailingSlash: true
     }
