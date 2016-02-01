@@ -8,6 +8,7 @@
 import {$} from './helpers/util';
 import worldbounds from '../_hbs/worldbounds';
 
+let paper = require('paper');
 let Tile = require('./elements/Tile');
 
 const init = () => {
@@ -24,8 +25,8 @@ const init = () => {
 
 const genGrid = (cnvs) => {
   //set world boundries, amount of tiles
-  let worldWidth = 40;
-  let worldHeight = 40;
+  let worldWidth = 80;
+  let worldHeight = 60;
   //create layer for tiles
   let worldLayer = new paper.Layer();
   //define loop variables
@@ -34,14 +35,24 @@ const genGrid = (cnvs) => {
   //defining initial tile size
   let tileSize = (cnvs.height / worldHeight)/2; //divide by two because it's the radius
   tileSize += tileSize/2; //+tileSize/2 because the tiles are placed -1/4 of the following line
-  //template for .clone()
-  let tileTmpl = new Tile(tileSize);
+  //template for .clone() //template for paper.Symbol to be .place() -ed
+  let hexagon = new paper.Path();
+  let points = 6;
+  let angle = ((2 * Math.PI) / points);
+  for(let i = 0; i <= points; i++) {
+    hexagon.add(new paper.Point(
+      tileSize * Math.cos((angle * i)+11), //+11 to turn
+      tileSize * Math.sin((angle * i)+11)
+    ));
+  }
+  let tileTmpl = new Tile(hexagon);
   //groups for navigation
-  let verGroups = [];
-  let horGroups = [];
+  //let verGroups = [];
+  //let horGroups = [];
   //loop-fill the worldlayer
-  while(wh > 0){
-    let tile = tileTmpl.clone();
+  let i = ww * wh; //amount of tiles, the count
+  while(i--){ //revese while-loop is fastest
+    let tile = tileTmpl.place();
     worldLayer.addChild(tile);
     if((worldHeight - wh) % 2){
       tile.position.x = ((worldWidth - ww) * (tile.bounds.width)) + (tile.bounds.width/2);
@@ -54,30 +65,35 @@ const genGrid = (cnvs) => {
       ww = worldWidth;
       wh--;
     }
+    //if(verGroups[worldWidth - ww]){
+    //  tile.push()
+    //}
   }
-  tileTmpl.remove(); //paper automatically adds this
 
+  hexagon.strokeColor = 'black';
+  //tileTmpl.remove(); //paper automatically adds this //can't remove base instance?
+  paper.view.update();
   bindNavEvents(cnvs, worldLayer);
 };
 
-const bindNavEvents = (cnvs, worldLayer) => { //verschil tellen en toevoegen
+const bindNavEvents = (cnvs, worldLayer) => {
   let dragable = false;
   let startPoint = {x: 0, y:0};
   let wlStartPoint = {x: 0, y:0};
   //bind events to worldLayer
-  cnvs.addEventListener("mousedown", function(e){
+  cnvs.addEventListener('mousedown', function(e){
     dragable = true;
     startPoint.x = e.offsetX;
     startPoint.y = e.offsetY;
     wlStartPoint = {x: worldLayer.position.x, y: worldLayer.position.y};
   });
-  document.addEventListener("mouseup", function(){
+  document.addEventListener('mouseup', function(){
     dragable = false;
   });
-  cnvs.addEventListener("mouseleave", function(){
+  cnvs.addEventListener('mouseleave', function(){
     dragable = false;
   });
-  cnvs.addEventListener("mousemove", function(e){
+  cnvs.addEventListener('mousemove', function(e){
     if(dragable){
       let xMargin = Math.abs(startPoint.x - e.offsetX);
       let yMargin = Math.abs(startPoint.y - e.offsetY);
@@ -92,6 +108,9 @@ const bindNavEvents = (cnvs, worldLayer) => { //verschil tellen en toevoegen
       }else{
         worldLayer.position.y = wlStartPoint.y + yMargin;
       }
+
+      paper.view.update();
+
     }
   });
 };
